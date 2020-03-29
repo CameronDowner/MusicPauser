@@ -1,53 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:gravity="center_vertical|center_horizontal|center">
 
     <TextView
-        android:id="@+id/hello_world"
+        android:id="@+id/informationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-thin"
+        android:text="To start, create a measurement of the ambient sounds and music. Once the recording is made, your music should pause when a loud sound is detected."
+        android:textColor="@android:color/black"
+        />
 
     <TextView
-        android:id="@+id/max_db"
+        android:id="@+id/textAmplitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hello_world" />
+        android:layout_below="@+id/informationText"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-thin"
+        android:text="@string/app_name"
+        android:textColor="@android:color/black"
+        android:textSize="48sp" />
+
+    <TextView
+        android:id="@+id/textDecibel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textAmplitude"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-thin"
+        android:text="@string/app_name"
+        android:textColor="@android:color/black"
+        android:textSize="48sp" />
+
+    <TextView
+        android:id="@+id/textFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textDecibel"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-thin"
+        android:text="@string/app_name"
+        android:textColor="@android:color/black"
+        android:textSize="48sp" />
 
     <Button
-        android:id="@+id/pause_music_button"
+        android:id="@+id/buttonMeasureMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textFrequency"
+        android:gravity="center"
+        android:text="Measure Music" />
+
+    <TextView
+        android:id="@+id/textAverageAmplitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonMeasureMusic"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-thin"
+        android:text="@string/app_name"
+        android:textColor="@android:color/black"
+        android:textSize="48sp" />
+
+    <TextView
+        android:id="@+id/textMaxAmplitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textAverageAmplitude"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-thin"
+        android:text="@string/app_name"
+        android:textColor="@android:color/black"
+        android:textSize="48sp" />
+
+    <TextView
+        android:id="@+id/shouldStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textMaxAmplitude"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-thin"
+        android:text="@string/app_name"
+        android:textColor="@android:color/black"
+        android:visibility="gone"
+        android:textSize="48sp" />
+
+
+    <TextView
+        android:id="@+id/thresholdLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pause Media"
-        />
+        android:text="Threshold Multiplier"
+        android:layout_below="@+id/shouldStop"
+        android:textSize="30sp" />
 
-    <Button
-        android:id="@+id/record_mic"
+    <TextView
+        android:id="@+id/thresholdDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/pause_music_button"
-        android:text="Record Mic"
-        />
-
-    <Button
-        android:id="@+id/stop_record_mic"
-        android:layout_width="match_parent"
+        android:layout_below="@+id/thresholdLabel"
+        android:text="The higher the number, the louder the sound needs to be to pause the music" />
+    <EditText
+        android:id="@+id/threshold"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/thresholdDesc"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/record_mic"
-        android:text="Stop Record Mic"
-        />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:inputType="numberDecimal"
+        android:importantForAutofill="no"
+        android:text="1.1"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+</RelativeLayout>
